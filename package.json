@@ -1,0 +1,18 @@
+{
+  "name": "chatapp",
+  "version": "1.0.0",
+  "description": "a simple chat app refer https://medium.com/@noufel.gouirhate/build-a-simple-chat-app-with-node-js-and-socket-io-ea716c093088",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.6",
+    "socket.io": "^2.1.1"
+  }
+}
