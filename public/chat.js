@@ -29,6 +29,10 @@ $(function(){
 	socket.on("display_message", function(data){
 		chatroom.append("<p class='message'>" + data.username + ": " + data.message + "</p>");
 	});
+	
+	socket.on("display_message1", function(data){
+		chatroom.append("<p class='message' align='right'>" + data.username + ": " + data.message + "</p>");
+	});
 
 	socket.on("typing", function(data){
 		feedback.html("<p><i>" + data.username + " is typing a message... </i></p>");
