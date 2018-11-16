@@ -11,7 +11,7 @@ $(function(){
 
 	message.bind("keypress", function(event){
 		var keycode = (event.keyCode ? event.keyCode : event.which);
-		if(keycode == 13) {
+		if(keycode == 13 && message != "") {
 			socket.emit("message_to_server", {message: message.val()});
 			message.val("");
 		}
