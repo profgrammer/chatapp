@@ -1,5 +1,5 @@
 $(function(){
-	var socket = io.connect("localhost:3000");
+	var socket = io();
 
 	var username = $("#username");
 	var message = $("#message");
@@ -7,9 +7,11 @@ $(function(){
 	var send_username = $("#send_username");
 	var chatroom = $("#chatroom");
 	var feedback = $("#feedback");
+	var count = $("#count");
 
-	message.bind("keypress", function(){
-		socket.emit("typing");
+	message.bind("keypress", function(event){
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+		if(keycode == 13) socket.emit("message_to_server", {message: message.val()});
 	});
 
 	send_username.click(function(){
@@ -28,5 +30,9 @@ $(function(){
 	socket.on("typing", function(data){
 		feedback.html("<p><i>" + data.username + " is typing a message... </i></p>");
 	});
+
+	socket.on("updatecount", function(data){
+		count.html(data.count);
+	})
 
 });

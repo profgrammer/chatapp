@@ -15,8 +15,11 @@ var server = app.listen(3000);
 
 var io = require("socket.io")(server);
 
+var count = 0;
 
 io.on('connection', function(socket){
+	count++;
+	io.sockets.emit("updatecount", {count: count});
 	console.log("New user Connected!!");
 
 	socket.username = "Anonymous";
@@ -31,6 +34,11 @@ io.on('connection', function(socket){
 
 	socket.on("typing", function(data){
 		socket.broadcast.emit("typing", {username: socket.username});
+	});
+
+	socket.on("disconnect", function(data){
+		count--;
+		io.sockets.emit("updatecount", {count: count});
 	});
 
 });

@@ -28,6 +28,10 @@ h1 {
     margin: 0px;
 }
 
+#usercount{
+    font-family: 'Comfortaa', sans-serif;
+}
+
 div#change_username, section#input_zone {
     border: 5px outset #8258FA;
 }
